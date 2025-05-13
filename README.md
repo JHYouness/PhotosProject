@@ -8,7 +8,7 @@ proyecto_caras/
 │   ├── Dockerfile
 │   └── requirements.txt
 ├── engine/
-│   ├── app.py
+│   ├── appi_organizador.py
 │   ├── Dockerfile
 │   └── requirements.txt
 ├── bd/                  # Contenedor del detector de caras
