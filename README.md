@@ -1,6 +1,6 @@
 # PhotosProyect
 
-## Arquitectura provisionesl
+## Arquitectura provisional
 ```bash
 proyecto_caras/
 ├── api_gateway/
