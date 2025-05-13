@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Blurrypics</title>
+  <link rel="icon" href="imagebluur.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header-bar"></div>
+    <div class="main-title">Proyecto Fotos Pixeladas</div>  
+  <div class="container">
+    <!-- Cuadro de subida -->
+    <div class="upload-box">
+      <h2>Subir Imagen</h2>
+      <form id="uploadForm">
+        <label for="imageInput" class="upload-label">
+          📷 Haz clic o arrastra una imagen
+          <span>Formatos: JPG, PNG, GIF</span>
+        </label>
+        <input type="file" id="imageInput" name="image" class="custom-file-input" accept="image/*" required />
+        <button type="submit">Subir Imagen</button>
+      </form>
+    </div>
+
+    <!-- Cuadro de vista previa -->
+    <div class="preview-box">
+      <h2>Vista Previa</h2>
+      <img id="previewImage" src="" alt="Vista previa" />
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('imageInput');
+    const previewImage = document.getElementById('previewImage');
+
+    document.querySelector('.upload-label').addEventListener('click', () => {
+      input.click();
+    });
+
+    input.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewImage.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const file = input.files[0];
+      if (!file) {
+        alert("Por favor selecciona una imagen.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('image', file);
+
+      try {
+        const response = await fetch('http://localhost:5000/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) throw new Error(response.statusText);
+        const result = await response.json();
+        alert('Imagen subida exitosamente');
+        console.log(result);
+      } catch (error) {
+        alert('Error al subir la imagen');
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>
