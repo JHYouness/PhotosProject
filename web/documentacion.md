@@ -19,3 +19,7 @@ Para integrar completamente esta interfaz con tu arquitectura de contenedores, n
 
 
 Esta es una estructura básica que puedes expandir según tus necesidades específicas. La interfaz es responsive y ofrece una experiencia de usuario intuitiva.
+
+
+
+npx shadcn@2.3.0 add "https://v0.dev/chat/b/b_kY4AKKyydXK?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..Ja1vxu-gGQbtEtYJ.WRrxSI2M9WSKyoo2cPmk5iA-lGRdz6g65wYY2A-fbfLbPKgrPV-hySmIgS8.BQ8sQHFHxYkdQ6UoPu0tHA"
