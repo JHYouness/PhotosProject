@@ -1,77 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Procesador de Imágenes</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Procesador de Imágenes</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Procesador de Imágenes</h1>
-        <p class="description">
-            Sube una imagen para detectar y pixelar automáticamente los rostros de menores de edad
-        </p>
+  <header>
+    <h1>Procesador de Imágenes</h1>
+    <p>Sube una imagen para detectar y pixelar automáticamente los rostros de menores de edad</p>
+  </header>
 
-        <div class="card-container">
-            <!-- Upload Card -->
-            <div class="card">
-                <div class="card-header">
-                    <h2>Subir Imagen</h2>
-                    <p>Selecciona una imagen para procesarla</p>
-                </div>
-                <div class="card-content">
-                    <div class="upload-area" id="upload-area">
-                        <div class="upload-icon" id="upload-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="17 8 12 3 7 8"></polyline>
-                                <line x1="12" y1="3" x2="12" y2="15"></line>
-                            </svg>
-                            <p>Arrastra y suelta una imagen o haz clic para seleccionar</p>
-                        </div>
-                        <img id="preview-image" class="preview-image hidden" alt="Imagen subida">
-                    </div>
-                    <div class="button-group">
-                        <button class="button button-outline" id="select-button">Seleccionar Imagen</button>
-                        <input type="file" id="image-upload" accept="image/*" class="hidden">
-                        <button class="button" id="process-button" disabled>Procesar Imagen</button>
-                    </div>
-                    <p id="error-message" class="error-message hidden"></p>
-                </div>
-            </div>
+  <main class="container">
+    <section class="card">
+      <h2>Subir Imagen</h2>
+      <p>Selecciona una imagen para procesarla</p>
+      <div class="image-box">
+        <img id="previewImage" src="" alt="Vista previa" />
+      </div>
+      <input type="file" id="imageInput" name="image" accept="image/*" required />
+      <button id="processBtn">Procesar Imagen</button>
+    </section>
 
-            <!-- Result Card -->
-            <div class="card">
-                <div class="card-header">
-                    <h2>Resultado</h2>
-                    <p>Imagen con rostros de menores pixelados</p>
-                </div>
-                <div class="card-content">
-                    <div class="result-area" id="result-area">
-                        <div class="result-placeholder" id="result-placeholder">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                <polyline points="21 15 16 10 5 21"></polyline>
-                            </svg>
-                            <p>La imagen procesada aparecerá aquí</p>
-                        </div>
-                        <img id="result-image" class="result-image hidden" alt="Imagen procesada">
-                    </div>
-                    <div class="card-footer">
-                        <button class="button button-outline hidden" id="view-button">Ver Imagen Completa</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <section class="card">
+      <h2>Resultado</h2>
+      <p>Imagen con rostros de menores pixelados</p>
+      <div class="image-box">
+        <img id="resultImage" src="" alt="Resultado" />
+      </div>
+      <a id="viewBtn" href="#" target="_blank" style="display: none;">
+        <button>Ver Imagen Completa</button>
+      </a>
+    </section>
+  </main>
 
-    <div id="loading-overlay" class="loading-overlay hidden">
-        <div class="spinner"></div>
-        <p>Procesando...</p>
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
