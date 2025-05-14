@@ -1,33 +1,22 @@
 version: '3.9'
 
 services:
-  api_gateway:
-    build: ./api_gateway
+  api_web:
+    build: ./api_web
+    container_name: api_web_container
     ports:
-      - "8000:8000"
-    depends_on:
-      - engine
+      - "5000:5000"
+    networks:
+      - blur_net
 
   engine:
     build: ./engine
+    container_name: engine_container
     ports:
-      - "8001:8001"
-    depends_on:
-      - bd
-      - clasit
-      - pixelado
+      - "5001:5001"
+    networks:
+      - blur_net
 
-  bd:
-    build: ./bd
-    ports:
-      - "8002:8002"
-
-  clasit:
-    build: ./clasit
-    ports:
-      - "8003:8003"
-
-  pixelado:
-    build: ./pixelado
-    ports:
-      - "8004:8004"
+networks:
+  blur_net:
+    driver: bridge
