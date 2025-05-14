@@ -16,3 +16,14 @@ def pixelate_faces():
 
     # Simulación: pixelar una región fija de la imagen
     x, y, w, h = 50, 50, 100, 100
+    face = img[y:y+h, x:x+w]
+    face = cv2.resize(face, (10, 10), interpolation=cv2.INTER_LINEAR)
+    face = cv2.resize(face, (w, h), interpolation=cv2.INTER_NEAREST)
+    img[y:y+h, x:x+w] = face
+
+    # Codificar imagen para devolverla como respuesta
+    _, img_encoded = cv2.imencode('.jpg', img)
+    return send_file(BytesIO(img_encoded.tobytes()), mimetype='image/jpeg')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5004)
