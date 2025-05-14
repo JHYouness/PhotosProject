@@ -10,6 +10,17 @@ FACE_DETECT_URL = "http://bd/detect"
 AGE_CLASSIFY_URL = "http://clasit/classify"
 PIXELATE_URL = "http://pixelado/pixelate"
 
+# TODO: Solucion temporar hasta tener hecho la parte de db
+from flask import send_file
+from io import BytesIO
+
+@app.route("/start", methods=["POST"])
+def start_pipeline():
+    # Simulación: devolver una imagen de prueba
+    test_image_path = "sample_output.jpg"
+    return send_file(test_image_path, mimetype='image/jpeg')
+
+'''
 @app.route("/start", methods=["POST"])
 def start_pipeline():
     if 'file' not in request.files:
@@ -36,7 +47,7 @@ def start_pipeline():
     if pixel_response.status_code != 200:
         return jsonify({"error": "Error en pixelado"}), 500
 
-    return pixel_response.content, 200, {'Content-Type': 'image/jpeg'}
+    return pixel_response.content, 200, {'Content-Type': 'image/jpeg'} '''
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001)
