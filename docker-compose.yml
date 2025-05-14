@@ -17,6 +17,14 @@ services:
     networks:
       - blur_net
 
+  bd:
+    build: ./bd
+    container_name: bd_container
+    ports:
+      - "5002:5002"
+    networks:
+      - blur_net
+
 networks:
   blur_net:
     driver: bridge
