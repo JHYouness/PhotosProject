@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+  api_web:
+    build: ./api_web
+    container_name: api_web_container
+    ports:
+      - "5000:5000"
+    networks:
+      - blur_net
+
+  engine:
+    build: ./engine
+    container_name: engine_container
+    ports:
+      - "5001:5001"
+    networks:
+      - blur_net
+
+  bd:
+    build: ./bd
+    container_name: bd_container
+    ports:
+      - "5002:5002"
+    networks:
+      - blur_net
+
+  clasit:
+    build: ./clasit
+    container_name: clasit_container
+    ports:
+      - "5003:5003"
+    networks:
+      - blur_net
+
+  pixelado:
+    build: ./pixelado
+    container_name: pixelado_container
+    ports:
+      - "5004:5004"
+    networks:
+      - blur_net
+
+networks:
+  blur_net:
+    driver: bridge

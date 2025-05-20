@@ -1,0 +1,5 @@
+flask
+retina-face
+opencv-python-headless
+numpy
+tf-keras
