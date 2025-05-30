@@ -84,3 +84,7 @@ history = model.fit(train_generator,
                     callbacks=[checkpoint, early_stop])
 
 
+"""
+Mejor resultado:
+val_AUC: 0.9817 - val_accuracy: 0.9133 - val_loss: 0.1863 - val_precision: 0.9733 - val_recall: 0.8478
+"""
